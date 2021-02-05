@@ -1,0 +1,47 @@
+var mongoose =require("mongoose");
+var orderSchema =mongoose.Schema({
+    oid:{type:Number,unique:true,sparse:true},
+    isOnline:{type:Boolean,default:true},
+    products:[],
+    products1:[{
+        product_id:String,
+        name:String,
+        desc:String,
+        quantity:Number,
+        product:String,
+        details:String,
+        price:Number
+    }],
+    tax:Number,
+    total_paid:{type:Number,default:0},
+    discount:{type:Number,default:0},
+    total:{type:Number,default:0},
+    date_purchased:{type:String},
+    dispatch_date:{type:String},
+    tracking_company:String,
+    tracking_id:String,
+    tracking_link:String,
+    order_progress:String,
+    status:String,
+    username:String,
+    mobile:Number,
+    email:String,
+    add_1:String,
+    add_2:String,
+    city:String,
+    state:String,
+    pincode:Number,
+    isPaid:{type:Boolean,default:false},
+    order_date:{type:Date,default:Date.now},
+    billno:Number,
+    payment_type:String,
+    advance:Number,
+    customer:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Customer"
+    },
+    order_note:String,
+    color:String
+})
+
+module.exports=mongoose.model("Order",orderSchema);
